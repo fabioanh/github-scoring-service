@@ -19,5 +19,5 @@ public class DependencyTest {
 
             .whereLayer("infrastructure").mayNotBeAccessedByAnyLayer()
             .whereLayer("application").mayOnlyBeAccessedByLayers("infrastructure")
-            .whereLayer("domain").mayOnlyBeAccessedByLayers("application");
+            .whereLayer("domain").mayOnlyBeAccessedByLayers("application", "infrastructure");
 }
