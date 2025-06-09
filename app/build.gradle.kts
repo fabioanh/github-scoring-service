@@ -20,6 +20,7 @@ dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.archunit)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
