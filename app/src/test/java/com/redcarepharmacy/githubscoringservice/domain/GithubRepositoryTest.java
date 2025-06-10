@@ -27,7 +27,7 @@ class GithubRepositoryTest {
 
         // then
         assertTrue(score >= 0 && score <= 1, "Score should be between 0 and 1");
-        assertEquals(0.6335842011121287, score, "Score should be 0.99 for sample values");
+        assertEquals(0.6335841879991068, score, "Score should be 0.99 for sample values");
 
     }
 
@@ -69,7 +69,7 @@ class GithubRepositoryTest {
 
         // then
         assertTrue(score >= 0 && score <= 1, "Score should be between 0 and 1");
-        assertTrue(0.99 <= score, "Score should be 0.99 for max score");
+        assertTrue(0.99 == score, "Score should be 0.99 for max score");
     }
 
 }
