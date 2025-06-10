@@ -38,7 +38,7 @@ class ScoringServiceImplTest {
         when(githubRepositoryClient.retrieveGithubRepositories()).thenReturn(retrievedRepositories);
 
         // when
-        scoringService.loadGithubRepositories(false);
+        scoringService.loadGithubRepositories();
 
         // then
         verify(githubRepositoryClient).retrieveGithubRepositories();

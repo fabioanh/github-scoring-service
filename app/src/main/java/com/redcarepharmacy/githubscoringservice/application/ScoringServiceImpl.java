@@ -22,16 +22,30 @@ public class ScoringServiceImpl implements ScoringService {
     }
 
     @Override
-    public void loadGithubRepositories(Boolean forceUpdate) {
-        List<GithubRepository> currentRepositories = this.githubRepositoryRepository.getAllRepositories();
-        if (forceUpdate || currentRepositories.isEmpty()) {
+    public void loadGithubRepositories() {
             List<GithubRepository> githubRepositories = this.githubRepositoryClient.retrieveGithubRepositories();
             this.githubRepositoryRepository.saveRepositories(githubRepositories);
-        }
     }
 
     @Override
     public List<GithubRepository> getAllRepositories() {
-        return this.githubRepositoryRepository.getAllRepositories();
+        List<GithubRepository> repositories = this.githubRepositoryRepository.getAllRepositories();
+        if( repositories.isEmpty()) {
+            // If no repositories are found, we can load them
+            this.loadGithubRepositories();
+            // Re-fetch after loading
+            repositories = this.githubRepositoryRepository.getAllRepositories();
+        }
+        return repositories;
+    }
+
+    @Override
+    public int getMaxStars() {
+        return this.githubRepositoryRepository.getMaxStars();
+    }
+
+    @Override
+    public int getMaxForks() {
+        return this.githubRepositoryRepository.getMaxForks();
     }
 }

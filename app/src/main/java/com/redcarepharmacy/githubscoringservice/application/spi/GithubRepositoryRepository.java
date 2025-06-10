@@ -8,4 +8,14 @@ public interface GithubRepositoryRepository {
     void saveRepositories(List<GithubRepository> githubRepositories);
 
     List<GithubRepository> getAllRepositories();
+
+    int getMaxStars();
+
+    int getMaxForks();
+    /*
+    getAllRepositories().stream()
+                .mapToInt(repo -> repo.stars())
+                .max()
+                .orElse(0)
+     */
 }
