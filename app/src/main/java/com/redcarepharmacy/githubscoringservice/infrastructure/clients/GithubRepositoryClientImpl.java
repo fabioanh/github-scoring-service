@@ -26,19 +26,19 @@ public class GithubRepositoryClientImpl implements GithubRepositoryClient {
     }
 
     @Override
-    public List<GithubRepository> retrieveGithubRepositories(String query, Instant updatedAfter, String language) {
+    public List<GithubRepository> retrieveGithubRepositories(String query, Instant createdAfter, String language) {
         GithubRepositoryRestResponse restResponse = getGithubRepositoryRestResponse(query);
         if (restResponse != null) {
-            return arrangeRepositoryResponse(updatedAfter, language, restResponse);
+            return arrangeRepositoryResponse(createdAfter, language, restResponse);
         } else {
             return Collections.emptyList();
         }
     }
 
-    private static List<GithubRepository> arrangeRepositoryResponse(Instant updatedAfter, String language, GithubRepositoryRestResponse restResponse) {
+    private static List<GithubRepository> arrangeRepositoryResponse(Instant createdAfter, String language, GithubRepositoryRestResponse restResponse) {
         return restResponse.items().stream()
-                .filter(item -> updatedAfter == null || item.updatedAt().isAfter(updatedAfter))
-                .filter(item -> language == null || item.language().equalsIgnoreCase(language))
+                .filter(item -> createdAfter == null || item.createdAt().isAfter(createdAfter))
+                .filter(item -> language == null || language.equalsIgnoreCase(item.language()))
                 .map(item -> new GithubRepository(
                         item.fullName(),
                         item.language(),

@@ -6,5 +6,5 @@ import java.time.Instant;
 import java.util.List;
 
 public interface GithubRepositoryClient {
-    List<GithubRepository> retrieveGithubRepositories(String query, Instant updatedAfter, String language);
+    List<GithubRepository> retrieveGithubRepositories(String query, Instant createdAfter, String language);
 }

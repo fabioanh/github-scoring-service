@@ -19,7 +19,7 @@ public class ScoringServiceImpl implements ScoringService {
     }
 
     @Override
-    public List<GithubRepository> findGithubRepositories(String query, Instant updatedAfter, String language) {
-        return this.githubRepositoryClient.retrieveGithubRepositories(query, updatedAfter, language);
+    public List<GithubRepository> findGithubRepositories(String query, Instant createdAfter, String language) {
+        return this.githubRepositoryClient.retrieveGithubRepositories(query, createdAfter, language);
     }
 }

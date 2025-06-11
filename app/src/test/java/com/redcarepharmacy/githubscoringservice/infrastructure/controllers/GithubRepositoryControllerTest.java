@@ -48,14 +48,13 @@ class GithubRepositoryControllerTest {
         when(scoringService.findGithubRepositories(anyString(), any(Instant.class), anyString())).thenReturn(sampleRepositories);
 
         // when
-//        ResultActions getResponse = mockMvc.perform(get("/githubRepositories?query=tool&updatedAfter=2019-06-10T12%3A30%3A00Z&language=Java")
-        ResultActions getResponse = mockMvc.perform(get("/githubRepositories?query=tool&updatedAfter=2019-06-10T12:30:00Z&language=Java")
+        ResultActions getResponse = mockMvc.perform(get("/githubRepositories?query=tool&createdAfter=2019-06-10T12:30:00Z&language=Java")
                 .accept(MediaType.APPLICATION_JSON));
 
         // then
         verify(scoringService).findGithubRepositories(anyString(), any(Instant.class), anyString());
         getResponse.andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().json("[{\"name\":\"user123/fantastic-tool\",\"score\":0.9173562583356396,\"language\":\"Java\",\"updatedAt\":\"2025-01-01T00:00:00Z\",\"stars\":200,\"forks\":76},{\"name\":\"user567/average-tool\",\"score\":0.8126480867424363,\"language\":\"Java\",\"updatedAt\":\"2022-01-01T00:00:00Z\",\"stars\":100,\"forks\":100}]"));
+                .andExpect(content().json("[{\"name\":\"user123/fantastic-tool\",\"score\":0.9173562583356396,\"language\":\"Java\",\"updatedAt\":\"2025-01-01T00:00:00Z\",\"createdAt\":\"2020-01-01T00:00:00Z\",\"stars\":200,\"forks\":76},{\"name\":\"user567/average-tool\",\"score\":0.8126480867424363,\"language\":\"Java\",\"updatedAt\":\"2022-01-01T00:00:00Z\",\"createdAt\":\"2020-01-01T00:00:00Z\",\"stars\":100,\"forks\":100}]"));
     }
 }

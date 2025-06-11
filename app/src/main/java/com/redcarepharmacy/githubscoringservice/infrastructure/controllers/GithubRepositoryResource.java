@@ -10,6 +10,7 @@ public record GithubRepositoryResource(
         double score,
         String language,
         Instant updatedAt,
+        Instant createdAt,
         int stars,
         int forks) {
 
@@ -19,6 +20,7 @@ public record GithubRepositoryResource(
                 githubRepository.getScore(maxStars, maxForks, clock),
                 githubRepository.language(),
                 githubRepository.updatedAt(),
+                githubRepository.createdAt(),
                 githubRepository.stars(),
                 githubRepository.forks()
         );

@@ -6,5 +6,5 @@ import java.time.Instant;
 import java.util.List;
 
 public interface ScoringService {
-    List<GithubRepository> findGithubRepositories(String query, Instant updatedAfter, String language);
+    List<GithubRepository> findGithubRepositories(String query, Instant createdAfter, String language);
 }
