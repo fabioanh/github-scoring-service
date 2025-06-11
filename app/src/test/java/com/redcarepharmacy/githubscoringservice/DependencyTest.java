@@ -10,7 +10,7 @@ import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 @AnalyzeClasses(packages = "com.redcarepharmacy.githubscoringservice", importOptions = ImportOption.DoNotIncludeTests.class)
 public class DependencyTest {
 
-//    @ArchTest
+    @ArchTest
     static final ArchRule layer_dependencies_are_respected = layeredArchitecture().consideringAllDependencies()
 
             .layer("infrastructure").definedBy("com.redcarepharmacy.githubscoringservice.infrastructure..")

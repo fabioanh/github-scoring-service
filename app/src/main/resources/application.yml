@@ -1,0 +1,2 @@
+github.rest.client.base-url: https://api.github.com
+github.rest.client.token: your_github_token_here
