@@ -24,10 +24,10 @@ dependencies {
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    // This dependency is used by the application.
     implementation(libs.guava)
     implementation(libs.spring.boot.dependencies)
     implementation(libs.spring.boot.starter.web)
+    implementation(libs.spring.doc.open.api)
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

@@ -29,7 +29,6 @@ public class AppConfig {
         return RestClient.builder()
                 .requestFactory(new JdkClientHttpRequestFactory())
                 .baseUrl(clientProperties.baseUrl())
-                .defaultHeader("Authorization", "Bearer " + clientProperties.token())
                 .build();
     }
 }

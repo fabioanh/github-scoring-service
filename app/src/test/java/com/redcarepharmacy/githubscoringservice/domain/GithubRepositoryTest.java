@@ -15,8 +15,8 @@ class GithubRepositoryTest {
         GithubRepository repo = new GithubRepository(
                 "test-repo",
                 "Java",
-                LocalDateTime.of(2020, 1, 1, 0, 0),
-                LocalDateTime.of(2021, 1, 1, 0, 0),
+                LocalDateTime.of(2020, 1, 1, 0, 0).toInstant(ZoneOffset.UTC),
+                LocalDateTime.of(2021, 1, 1, 0, 0).toInstant(ZoneOffset.UTC),
                 100,
                 50
         );
@@ -27,7 +27,7 @@ class GithubRepositoryTest {
 
         // then
         assertTrue(score >= 0 && score <= 1, "Score should be between 0 and 1");
-        assertEquals(0.6335841879991068, score, "Score should be 0.99 for sample values");
+        assertEquals(0.639984028281926, score, "Score should be 0.639984028281926 for sample values");
 
     }
 
@@ -37,8 +37,8 @@ class GithubRepositoryTest {
         GithubRepository repo = new GithubRepository(
                 "test-repo",
                 "Java",
-                LocalDateTime.of(2012, 1, 1, 0, 0),
-                LocalDateTime.of(2012, 2, 1, 0, 0),
+                LocalDateTime.of(2012, 1, 1, 0, 0).toInstant(ZoneOffset.UTC),
+                LocalDateTime.of(2012, 2, 1, 0, 0).toInstant(ZoneOffset.UTC),
                 100,
                 50
         );
@@ -54,11 +54,11 @@ class GithubRepositoryTest {
     public void testGetScore_maxScore_computedSuccessfully() {
         // given
         Clock clock = Clock.fixed(Instant.ofEpochMilli(1749496091689L), ZoneOffset.UTC);
-        LocalDateTime now = LocalDateTime.now(clock);
+        Instant now = Instant.now(clock);
         GithubRepository repo = new GithubRepository(
                 "test-repo",
                 "Java",
-                LocalDateTime.of(2020, 1, 1, 0, 0),
+                LocalDateTime.of(2020, 1, 1, 0, 0).toInstant(ZoneOffset.UTC),
                 now,
                 200,
                 100
@@ -69,7 +69,7 @@ class GithubRepositoryTest {
 
         // then
         assertTrue(score >= 0 && score <= 1, "Score should be between 0 and 1");
-        assertTrue(0.99 == score, "Score should be 0.99 for max score");
+        assertEquals(1.0, score, "Score should be 0.99 for max score");
     }
 
 }

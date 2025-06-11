@@ -2,14 +2,9 @@ package com.redcarepharmacy.githubscoringservice.application.api;
 
 import com.redcarepharmacy.githubscoringservice.domain.GithubRepository;
 
+import java.time.Instant;
 import java.util.List;
 
 public interface ScoringService {
-    void loadGithubRepositories();
-
-    List<GithubRepository> getAllRepositories();
-
-    int getMaxStars();
-
-    int getMaxForks();
+    List<GithubRepository> findGithubRepositories(String query, Instant updatedAfter, String language);
 }
